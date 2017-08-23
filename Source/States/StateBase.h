@@ -12,6 +12,8 @@ class StateBase
         :   m_pGame   (&game)
         {}
 
+        virtual ~StateBase() = default;
+
         virtual void handleEvent    (sf::Event e) = 0;
         virtual void handleInput    () = 0;
         virtual void update         (sf::Time deltaTime) = 0;
