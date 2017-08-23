@@ -6,13 +6,12 @@ namespace gui
 {
 
 StackMenu::StackMenu(const sf::Vector2f& origin)
-:   m_basePosition  (origin.x, 20)
-,   m_baseSize      (555, 20)
+:   m_basePosition  (origin.x, 199)
+,   m_baseSize      (300, 20)
 {
-    m_background.setPosition(0, 0);
     m_background.setFillColor({100, 100, 100, 128});
     m_background.setSize(m_baseSize);
-    m_background.setPosition(m_basePosition.x - m_baseSize.x / 2, 5);
+    m_background.setPosition(m_basePosition.x - m_baseSize.x / 2, 185);
 }
 
 void StackMenu::addWidget(std::unique_ptr<Widget> w)
@@ -23,14 +22,13 @@ void StackMenu::addWidget(std::unique_ptr<Widget> w)
 
 void StackMenu::initWidget(Widget& widget)
 {
-    widget.setPosition({m_basePosition.x - widget.getSize().x,
+    widget.setPosition({m_basePosition.x - widget.getSize().x / 2,
                        m_basePosition.y});
 
 
     m_basePosition.y    += widget.getSize().y + 10;
     m_baseSize.y        += widget.getSize().y + 10;
     m_background.setSize(m_baseSize);
-
 }
 
 void StackMenu::handleEvents(sf::Event e, const sf::RenderWindow& window)

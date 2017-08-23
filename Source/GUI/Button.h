@@ -24,9 +24,10 @@ namespace gui
         private:
             void updateText();
 
-            sf::Vector2f       m_position;
-            sf::RectangleShape m_button;
-            sf::Text m_text;
+            sf::Vector2f    m_position;
+
+            Rectangle   m_button;
+            Text        m_text;
             std::function<void(void)> m_function = [](){};
 
     };

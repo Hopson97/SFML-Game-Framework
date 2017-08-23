@@ -7,13 +7,7 @@ namespace gui {
 Button::Button()
 {
     m_button.setFillColor({52, 152, 219});
-    m_button.setSize({512, 128});
-
-    m_text.setCharacterSize (40);
-    m_text.setOutlineColor  (sf::Color::Black);
-    m_text.setFillColor     (sf::Color::White);
-    m_text.setFont          (ResourceHolder::get().fonts.get("arial"));
-
+    m_button.setSize({256, 64});
 }
 
 void Button::setFunction(std::function<void(void)>func)
@@ -76,7 +70,7 @@ void Button::updateText()
 
 sf::Vector2f Button::getSize() const
 {
-    return {256, 128};
+    return m_button.getSize();
 }
 
 }
