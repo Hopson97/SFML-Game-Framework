@@ -19,6 +19,8 @@ class Game
 
         void popState();
 
+        const sf::RenderWindow& getWindow() const;
+
     private:
         void handleEvents();
         void tryPop();

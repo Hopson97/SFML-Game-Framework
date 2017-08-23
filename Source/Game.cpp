@@ -90,3 +90,8 @@ void Game::popState()
 {
     m_shouldPop = true;
 }
+
+const sf::RenderWindow& Game::getWindow() const
+{
+    return m_window;
+}
