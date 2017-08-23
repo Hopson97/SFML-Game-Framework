@@ -3,9 +3,11 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "../Util/NonCopyable.h"
+
 class Game;
 
-class StateBase
+class StateBase : public NonCopyable
 {
     public:
         StateBase(Game& game)
