@@ -5,6 +5,7 @@
 Game::Game()
 :   m_window    ({1280, 720}, "GameNameHere")
 {
+    m_window.setFramerateLimit(60);
     pushState<StatePlaying>(*this);
 }
 

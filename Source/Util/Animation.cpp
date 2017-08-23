@@ -1,9 +1,21 @@
 #include "Animation.h"
 
 
-Animation::Animation(const std::initializer_list<Animation::Frame>& frames)
-:   m_frames {frames}
+Animation::Animation(unsigned frameSize)
+:   FRAME_SIZE  (frameSize)
 { }
+
+void Animation::addFrame(unsigned index, sf::Time delay)
+{
+    sf::IntRect bounds;
+    bounds.top = 0;
+    bounds.height = FRAME_SIZE;
+    bounds.width  = FRAME_SIZE;
+    bounds.left   = index * FRAME_SIZE;
+
+    m_frames.emplace_back(bounds, delay);
+}
+
 
 const sf::IntRect& Animation::getFrame()
 {

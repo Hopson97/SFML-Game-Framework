@@ -9,12 +9,17 @@ class Animation
     public:
         struct Frame
         {
+            Frame(const sf::IntRect& bnds, sf::Time dly)
+            :   bounds  (bnds)
+            ,   delay   (dly) {}
+
             sf::IntRect bounds;
             sf::Time    delay;
         };
 
-        Animation() = default;
-        Animation(const std::initializer_list<Animation::Frame>& frames);
+        Animation(unsigned frameSize);
+
+        void addFrame(unsigned index, sf::Time delay);
 
         const sf::IntRect& getFrame();
 
@@ -24,6 +29,7 @@ class Animation
         std::vector<Frame> m_frames;
 
         unsigned m_framePointer = 0;
+        const unsigned FRAME_SIZE;
 
 };
 
