@@ -8,20 +8,43 @@ Game::Game()
 
 void Game::run()
 {
-    sf::Clock c;
+    constexpr unsigned TPS = 60;                            //ticks per seconds
+    const sf::Time     timePerUpdate = sf::seconds(1.0f / float(TPS));
+    unsigned ticks = 0;
+
+    sf::Clock timer;
+    auto lastTime = sf::Time::Zero;
+    auto lag      = sf::Time::Zero;
+
     while (m_window.isOpen() && !m_states.empty())
     {
-        auto deltaime = c.restart();
-
         auto& state = getCurrentState();
 
-        state.handleInput();
-        state.update(deltaime);
+        //Get times
+        auto time = timer.getElapsedTime();
+        auto elapsed = time - lastTime;
 
+        lastTime = time;
+        lag += elapsed;
+
+        //Real time update
+        state.handleInput();
+        state.update(elapsed);
+
+        //Fixed time update
+        while (lag >= timePerUpdate)
+        {
+            ticks++;
+            lag -= timePerUpdate;
+            state.fixedUpdate(elapsed);
+        }
+
+        //Render
         m_window.clear();
         state.render(m_window);
         m_window.display();
 
+        //Handle window events
         handleEvents();
         tryPop();
     }
@@ -59,8 +82,6 @@ StateBase& Game::getCurrentState()
 {
     return *m_states.back();
 }
-
-
 
 void Game::popState()
 {
