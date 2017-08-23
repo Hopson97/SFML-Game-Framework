@@ -1,9 +1,11 @@
 #include "Game.h"
 
+#include "States/StatePlaying.h"
+
 Game::Game()
 :   m_window    ({1280, 720}, "GameNameHere")
 {
-
+    pushState<StatePlaying>(*this);
 }
 
 void Game::run()
