@@ -25,8 +25,6 @@ class Game
         sf::RenderWindow m_window;
 
 
-
-
         bool m_shouldPop = false;
 
 };

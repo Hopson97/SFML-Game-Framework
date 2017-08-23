@@ -27,7 +27,21 @@ void Game::tryPop()
 
 void Game::handleEvents()
 {
+    sf::Event e;
 
+    while (m_window.pollEvent(e))
+    {
+        switch (e.type)
+        {
+            case sf::Event::Closed:
+                m_window.close();
+                break;
+
+            default:
+                break;
+
+        }
+    }
 }
 
 
