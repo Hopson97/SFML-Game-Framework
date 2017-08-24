@@ -12,18 +12,13 @@ StatePlaying::StatePlaying(Game& game)
 :   StateBase   (game)
 ,   m_TestMenu  (game.getWindow())
 {
-    m_TestMenu.addTab("Tab one");
-    m_TestMenu.addTab("Tab two");
-
-
     auto b = std::make_unique<gui::Button>();
     b->setText("Button 1");
-    b->setFunction([]()
-    {
+    b->setFunction([]() {
         std::cout << "Button 1 clicked!" << '\n';
     });
 
-    m_TestMenu.addWidget(0, std::move(b));
+    m_TestMenu.addWidget(std::move(b));
 }
 
 void StatePlaying::handleEvent(sf::Event e)
