@@ -7,10 +7,16 @@
 
 namespace gui
 {
+    enum class ButtonSize
+    {
+        Small,
+        Wide,
+    };
+
     class Button : public gui::Widget
     {
         public:
-            Button();
+            Button(ButtonSize s = ButtonSize::Wide);
 
             void setFunction(std::function<void(void)> func);
             void setText    (const std::string& str);

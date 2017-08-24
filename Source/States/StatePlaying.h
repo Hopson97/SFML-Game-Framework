@@ -2,6 +2,7 @@
 #define STATEPLAYING_H_INCLUDED
 
 #include "StateBase.h"
+#include "../GUI/MultiMenu.h"
 
 class StatePlaying : public StateBase
 {
@@ -15,10 +16,7 @@ class StatePlaying : public StateBase
         void render         (sf::RenderTarget& renderer)    override;
 
     private:
-        gui::StackMenu m_TestMenu;
-
-
-
+        gui::MultiMenu m_TestMenu;
 };
 
 #endif // STATEPLAYING_H_INCLUDED

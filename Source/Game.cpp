@@ -51,7 +51,7 @@ void Game::run()
 
 
         //Handle window events
-        handleEvents();
+        handleEvent();
         tryPop();
     }
 }
@@ -64,7 +64,7 @@ void Game::tryPop()
     }
 }
 
-void Game::handleEvents()
+void Game::handleEvent()
 {
     sf::Event e;
 

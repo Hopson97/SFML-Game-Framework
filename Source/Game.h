@@ -23,7 +23,7 @@ class Game
         const sf::RenderWindow& getWindow() const;
 
     private:
-        void handleEvents();
+        void handleEvent();
         void tryPop();
 
         StateBase& getCurrentState();

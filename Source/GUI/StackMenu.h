@@ -6,22 +6,25 @@
 #include <memory>
 
 #include "Widget.h"
+#include "../Util/NonCopyable.h"
 
 namespace gui
 {
 
-class StackMenu
+class StackMenu : public NonCopyable
 {
     public:
         StackMenu(const sf::RenderWindow& window);
+        StackMenu(const sf::Vector2f& position);
 
-        template <typename T, typename... Args>
-        void addWidget(Args&&... args);
+        StackMenu(StackMenu&& other);
+        StackMenu& operator =(StackMenu&& other);
 
 
+        ~StackMenu() = default;
         void addWidget(std::unique_ptr<Widget>);
 
-        void handleEvents   (sf::Event e, const sf::RenderWindow& window);
+        void handleEvent   (sf::Event e, const sf::RenderWindow& window);
         void render         (sf::RenderTarget& renderer);
 
     private:
@@ -33,14 +36,6 @@ class StackMenu
         sf::Vector2f m_basePosition;
         sf::Vector2f m_baseSize;
 };
-
-template <typename T, typename... Args>
-void StackMenu::addWidget(Args&&... args)
-{
-    m_widgets.push_back(std::make_unique<T>(std::forward<Args>(args)...));
-    initWidget(*m_widgets.back());
-}
-
 
 }
 

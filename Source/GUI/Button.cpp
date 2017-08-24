@@ -4,10 +4,20 @@
 
 namespace gui {
 
-Button::Button()
+Button::Button(ButtonSize s)
 {
     m_button.setFillColor({52, 152, 219});
-    m_button.setSize({256, 64});
+    switch (s)
+    {
+        case ButtonSize::Wide:
+            m_button.setSize({256, 64});
+            break;
+
+        case ButtonSize::Small:
+            m_button.setSize({128, 64});
+            break;
+    }
+
 }
 
 void Button::setFunction(std::function<void(void)>func)

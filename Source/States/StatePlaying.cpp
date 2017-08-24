@@ -2,7 +2,6 @@
 
 #include "../GUI/Button.h"
 #include "../GUI/Textbox.h"
-#include "../GUI/StackMenu.h"
 #include "../Game.h"
 
 #include <iostream>
@@ -12,7 +11,8 @@ std::string test;
 StatePlaying::StatePlaying(Game& game)
 :   StateBase   (game)
 ,   m_TestMenu  (game.getWindow())
-{
+{/*
+    gui::StackMenu testTab();
     auto b = std::make_unique<gui::Button>();
     b->setText("Button 1");
     b->setFunction([]()
@@ -27,18 +27,21 @@ StatePlaying::StatePlaying(Game& game)
         std::cout << "Button 2 clicked!" << '\n';
     });
 
-    m_TestMenu.addWidget(std::move(b));
-    m_TestMenu.addWidget(std::move(b2));
+
+    testTab.addWidget(std::move(b));
+    testTab.addWidget(std::move(b2));
+
+    m_TestMenu.addTab("Tab One", std::move(testTab));
 
     auto textBox = std::make_unique<gui::TextBox>(test);
     textBox->setLabel("TestBox");
 
-    m_TestMenu.addWidget(std::move(textBox));
+    m_TestMenu.addWidget(std::move(textBox));*/
 }
 
 void StatePlaying::handleEvent(sf::Event e)
 {
-    m_TestMenu.handleEvents(e, m_pGame->getWindow());
+    m_TestMenu.handleEvent(e, m_pGame->getWindow());
 }
 
 void StatePlaying::handleInput()
@@ -58,5 +61,5 @@ void StatePlaying::fixedUpdate(sf::Time deltaTime)
 
 void StatePlaying::render(sf::RenderTarget& renderer)
 {
-    menu.render(renderer);
+    m_TestMenu.render(renderer);
 }
