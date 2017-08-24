@@ -1,17 +1,17 @@
 #include "StatePlaying.h"
 
 #include "../GUI/Button.h"
+#include "../GUI/Textbox.h"
 #include "../GUI/StackMenu.h"
 #include "../Game.h"
 
 #include <iostream>
 
-gui::StackMenu menu({1280 / 2,
-                     200});
-
+std::string test;
 
 StatePlaying::StatePlaying(Game& game)
 :   StateBase   (game)
+,   m_TestMenu  (game.getWindow())
 {
     auto b = std::make_unique<gui::Button>();
     b->setText("Button 1");
@@ -27,13 +27,18 @@ StatePlaying::StatePlaying(Game& game)
         std::cout << "Button 2 clicked!" << '\n';
     });
 
-    menu.addWidget(std::move(b));
-    menu.addWidget(std::move(b2));
+    m_TestMenu.addWidget(std::move(b));
+    m_TestMenu.addWidget(std::move(b2));
+
+    auto textBox = std::make_unique<gui::TextBox>(test);
+    textBox->setLabel("TestBox");
+
+    m_TestMenu.addWidget(std::move(textBox));
 }
 
 void StatePlaying::handleEvent(sf::Event e)
 {
-    menu.handleEvents(e, m_pGame->getWindow());
+    m_TestMenu.handleEvents(e, m_pGame->getWindow());
 }
 
 void StatePlaying::handleInput()

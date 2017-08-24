@@ -13,7 +13,7 @@ namespace gui
 class StackMenu
 {
     public:
-        StackMenu(const sf::Vector2f& origin);
+        StackMenu(const sf::RenderWindow& window);
 
         template <typename T, typename... Args>
         void addWidget(Args&&... args);

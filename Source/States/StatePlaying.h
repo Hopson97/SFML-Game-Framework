@@ -15,6 +15,7 @@ class StatePlaying : public StateBase
         void render         (sf::RenderTarget& renderer)    override;
 
     private:
+        gui::StackMenu m_TestMenu;
 
 
 

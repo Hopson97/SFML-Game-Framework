@@ -5,6 +5,7 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
+#include "Util/FPSCounter.h"
 #include "States/StateBase.h"
 
 class Game
@@ -29,6 +30,8 @@ class Game
 
         sf::RenderWindow m_window;
         std::vector<std::unique_ptr<StateBase>> m_states;
+
+        FPSCounter counter;
 
         bool m_shouldPop = false;
 

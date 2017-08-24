@@ -5,8 +5,8 @@
 namespace gui
 {
 
-StackMenu::StackMenu(const sf::Vector2f& origin)
-:   m_basePosition  (origin.x, 199)
+StackMenu::StackMenu(const sf::RenderWindow& window)
+:   m_basePosition  (window.getSize().x / 2, 100)
 ,   m_baseSize      (300, 20)
 {
     m_background.setFillColor({100, 100, 100, 128});
@@ -26,8 +26,8 @@ void StackMenu::initWidget(Widget& widget)
                        m_basePosition.y});
 
 
-    m_basePosition.y    += widget.getSize().y + 10;
-    m_baseSize.y        += widget.getSize().y + 10;
+    m_basePosition.y    += widget.getSize().y + 25;
+    m_baseSize.y        += widget.getSize().y + 25;
     m_background.setSize(m_baseSize);
 }
 

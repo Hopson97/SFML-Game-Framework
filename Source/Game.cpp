@@ -5,7 +5,7 @@
 Game::Game()
 :   m_window    ({1280, 720}, "GameNameHere")
 {
-    m_window.setFramerateLimit(60);
+    m_window.setFramerateLimit(100);
     pushState<StatePlaying>(*this);
 }
 
@@ -33,6 +33,7 @@ void Game::run()
         //Real time update
         state.handleInput();
         state.update(elapsed);
+        counter.update();
 
         //Fixed time update
         while (lag >= timePerUpdate)
@@ -45,7 +46,9 @@ void Game::run()
         //Render
         m_window.clear();
         state.render(m_window);
+        counter.draw(m_window);
         m_window.display();
+
 
         //Handle window events
         handleEvents();
