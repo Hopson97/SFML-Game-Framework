@@ -11,8 +11,11 @@ std::string test;
 StatePlaying::StatePlaying(Game& game)
 :   StateBase   (game)
 ,   m_TestMenu  (game.getWindow())
-{/*
-    gui::StackMenu testTab();
+{
+    m_TestMenu.addTab("Tab one");
+    m_TestMenu.addTab("Tab two");
+
+
     auto b = std::make_unique<gui::Button>();
     b->setText("Button 1");
     b->setFunction([]()
@@ -20,23 +23,7 @@ StatePlaying::StatePlaying(Game& game)
         std::cout << "Button 1 clicked!" << '\n';
     });
 
-    auto b2 = std::make_unique<gui::Button>();
-    b2->setText("Button 2");
-    b2->setFunction([]()
-    {
-        std::cout << "Button 2 clicked!" << '\n';
-    });
-
-
-    testTab.addWidget(std::move(b));
-    testTab.addWidget(std::move(b2));
-
-    m_TestMenu.addTab("Tab One", std::move(testTab));
-
-    auto textBox = std::make_unique<gui::TextBox>(test);
-    textBox->setLabel("TestBox");
-
-    m_TestMenu.addWidget(std::move(textBox));*/
+    m_TestMenu.addWidget(0, std::move(b));
 }
 
 void StatePlaying::handleEvent(sf::Event e)

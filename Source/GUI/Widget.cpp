@@ -29,6 +29,7 @@ bool Widget::Rectangle::isClicked  (sf::Event e, const sf::RenderWindow& window)
             return e.mouseButton.button == sf::Mouse::Left;
         }
     }
+    return false;
 }
 
 }

@@ -9,7 +9,7 @@ namespace gui
     class Widget
     {
         public:
-            virtual void handleEvent(sf::Event e, const sf::RenderWindow& window);
+            virtual void handleEvent(sf::Event e, const sf::RenderWindow& window) = 0;
 
             virtual void render(sf::RenderTarget& renderer) = 0;
 
