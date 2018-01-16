@@ -13,8 +13,8 @@ class Animation
             :   bounds  (bnds)
             ,   delay   (dly) {}
 
-            sf::IntRect bounds;
-            sf::Time    delay;
+            sf::IntRect bounds; //The area in a texture of the frame
+            sf::Time    delay;  //Time delay to next frame
         };
 
         Animation(unsigned frameSize);

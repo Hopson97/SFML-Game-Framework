@@ -11,12 +11,10 @@ std::string getFileContent(const std::string& filePath, bool throws)
     if (!inFile.is_open())
     {
         std::string error = "Unable to open file: " + filePath + "!";
-        if (throws)
-        {
+        if (throws) {
             throw std::runtime_error(error);
         }
-        else
-        {
+        else {
             std::cerr << error << '\n';
         }
     }

@@ -14,19 +14,19 @@ FPSCounter::FPSCounter()
     m_text.setCharacterSize(25);
 }
 
-
+//updates the FPS variable
 void FPSCounter::update()
 {
     m_frameCount++;
 
-    if (m_delayTimer.getElapsedTime().asSeconds() > 0.2)
-    {
+    if (m_delayTimer.getElapsedTime().asSeconds() > 0.2) {
         m_fps = m_frameCount / m_fpsTimer.restart().asSeconds();
         m_frameCount = 0;
         m_delayTimer.restart();
     }
 }
 
+//Draws the FPS display to the window
 void FPSCounter::draw(sf::RenderTarget& renderer)
 {
     m_text.setString("FPS: " + std::to_string((int)m_fps));
