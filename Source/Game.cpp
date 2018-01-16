@@ -9,9 +9,10 @@ Game::Game()
     pushState<StatePlaying>(*this);
 }
 
+//Runs the main loop
 void Game::run()
 {
-    constexpr unsigned TPS = 60;                            //ticks per seconds
+    constexpr unsigned TPS = 60; //ticks per seconds
     const sf::Time     timePerUpdate = sf::seconds(1.0f / float(TPS));
     unsigned ticks = 0;
 
@@ -19,8 +20,8 @@ void Game::run()
     auto lastTime = sf::Time::Zero;
     auto lag      = sf::Time::Zero;
 
-    while (m_window.isOpen() && !m_states.empty())
-    {
+    //Main loop of the game
+    while (m_window.isOpen() && !m_states.empty()) {
         auto& state = getCurrentState();
 
         //Get times
@@ -56,23 +57,22 @@ void Game::run()
     }
 }
 
+//Tries to pop the current game state
 void Game::tryPop()
 {
-    if (m_shouldPop)
-    {
+    if (m_shouldPop) {
         m_states.pop_back();
     }
 }
 
+//Handles window events, called every frame
 void Game::handleEvent()
 {
     sf::Event e;
 
-    while (m_window.pollEvent(e))
-    {
+    while (m_window.pollEvent(e)) {
         getCurrentState().handleEvent(e);
-        switch (e.type)
-        {
+        switch (e.type) {
             case sf::Event::Closed:
                 m_window.close();
                 break;
@@ -84,16 +84,19 @@ void Game::handleEvent()
     }
 }
 
+//Returns a reference to the current game state
 StateBase& Game::getCurrentState()
 {
     return *m_states.back();
 }
 
+//Flags a boolean for the game to pop state
 void Game::popState()
 {
     m_shouldPop = true;
 }
 
+//on tin
 const sf::RenderWindow& Game::getWindow() const
 {
     return m_window;
