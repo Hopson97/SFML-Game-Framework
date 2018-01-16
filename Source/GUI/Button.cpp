@@ -7,8 +7,7 @@ namespace gui {
 Button::Button(ButtonSize s)
 {
     m_button.setFillColor({52, 152, 219});
-    switch (s)
-    {
+    switch (s) {
         case ButtonSize::Wide:
             m_button.setSize({256, 64});
             break;
@@ -40,15 +39,20 @@ void Button::handleEvent(sf::Event e, const sf::RenderWindow& window)
 {
     auto pos = sf::Mouse::getPosition(window);
 
-    if (m_button.getGlobalBounds().contains(pos.x, pos.y))
-    {
-        if (e.type == sf::Event::MouseButtonPressed)
-        {
-            if (e.mouseButton.button == sf::Mouse::Left)
-            {
-                m_function();
+    switch(e.type) {
+        case sf::Event::MouseButtonPressed:
+            switch(e.mouseButton.button) {
+                case sf::Mouse::Left:
+                    if (m_button.getGlobalBounds().contains(pos.x, pos.y)) {
+                        m_function();
+                    }
+
+                default:
+                    break;
             }
-        }
+
+        default:
+            break;
     }
 }
 
