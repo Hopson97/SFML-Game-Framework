@@ -7,48 +7,43 @@
 template<typename Resource>
 class ResourceManager
 {
-    using CrString = const std::string&;
-
     public:
-        ResourceManager (CrString folder, CrString extention)
+        ResourceManager (const std::string& folder, const std::string& extention)
         :   m_folder    ("res/" + folder + "/")
         ,   m_extention ("." + extention)
         { }
 
-        const Resource& get(CrString name)
+        const Resource& get(const std::string& name)
         {
-            if (!exists(name))
-            {
+            if (!exists(name)) {
                 add(name);
             }
 
             return m_resources.at(name);
         }
 
-        bool exists(CrString name) const
+        bool exists(const std::string& name) const
         {
             return m_resources.find(name) != m_resources.end();
         }
 
-        void add(CrString name)
+        void add(const std::string& name)
         {
             Resource r;
 
             //if the resource fails to load, then it adds a default "fail" resource
-            if(!r.loadFromFile(getFullname(name)))
-            {
+            if(!r.loadFromFile(getFullFilename(name))) {
                 Resource fail;
                 fail.loadFromFile(m_folder + "_fail_" + m_extention);
                 m_resources.insert(std::make_pair(name, fail));
             }
-            else
-            {
+            else {
                 m_resources.insert(std::make_pair(name, r));
             }
         }
 
     private:
-        std::string getFullname(CrString name)
+        std::string getFullFilename(const std::string& name)
         {
             return m_folder + name + m_extention;
         }
