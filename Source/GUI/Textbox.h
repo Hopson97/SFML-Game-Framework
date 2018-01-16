@@ -24,6 +24,9 @@ namespace gui
             void handleClick    (sf::Event e, const sf::RenderWindow& window);
             void handleTextInput(sf::Event e);
 
+            bool isValidCharacter   (unsigned char keyCode);
+            bool isBackspace        (unsigned char keycode);
+
             sf::Vector2f    m_position;
 
             Rectangle       m_rect;

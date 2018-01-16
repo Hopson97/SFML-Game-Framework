@@ -24,12 +24,10 @@ void TextBox::handleEvent(sf::Event e, const sf::RenderWindow& window)
 
 void TextBox::render(sf::RenderTarget& renderer)
 {
-    if (!m_isActive)
-    {
+    if (!m_isActive) {
         m_rect.setFillColor({52, 152, 219});
     }
-    else
-    {
+    else {
         m_rect.setFillColor({82, 132, 239});
     }
     renderer.draw(m_rect);
@@ -83,17 +81,41 @@ void TextBox::handleClick (sf::Event e, const sf::RenderWindow& window)
 
 void TextBox::handleTextInput (sf::Event e)
 {
+    switch(e.type) {
+        case sf::Event::TextEntered:
+            if (m_isActive) {
+                //Get the key that was entered
+                unsigned char keyCode = e.text.unicode;
+
+
+                if (isValidCharacter(keyCode)) {
+                    m_pModString->push_back(keyCode);
+                }
+                else if (isBackspace(keyCode)) {
+                    //prevents popping back an empty string
+                    if (m_pModString->length() > 0)
+                        m_pModString->pop_back();
+                }
+                m_text.setString(*m_pModString);
+            }
+            break;
+
+        default:
+            break;
+    }
+
+
     if (e.type == sf::Event::TextEntered && m_isActive)
     {
         //Get the key that was entered
-        unsigned char k = e.text.unicode;
+        unsigned char keyCode = e.text.unicode;
 
         //Test if it within the "Type-able keys eg aA to zZ and 0 to 9
-        if (k >= 32 && k <= 127)
+        if (isValidCharacter(keyCode))
         {
-            m_pModString->push_back(k);
+            m_pModString->push_back(keyCode);
         }
-        else if (k == 8) //Backspace
+        else if (isBackspace(keyCode))
         {
             //prevents popping back an empty string
             if (m_pModString->length() > 0)
@@ -102,5 +124,18 @@ void TextBox::handleTextInput (sf::Event e)
         m_text.setString(*m_pModString);
     }
 }
+
+ //return true if the character is within the valid keys eg aA to zZ and 0 to 9
+bool TextBox::isValidCharacter(unsigned char keyCode)
+{
+    return  keyCode >= 32 &&
+            keyCode <= 127;
+}
+
+bool TextBox::isBackspace(unsigned char keycode)
+{
+    return keycode == 8;
+}
+
 
 }
