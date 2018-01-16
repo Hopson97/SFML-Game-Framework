@@ -87,7 +87,6 @@ void TextBox::handleTextInput (sf::Event e)
                 //Get the key that was entered
                 unsigned char keyCode = e.text.unicode;
 
-
                 if (isValidCharacter(keyCode)) {
                     m_pModString->push_back(keyCode);
                 }
