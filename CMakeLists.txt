@@ -16,3 +16,9 @@ add_executable(framework
     ./Source/States/*
     ./Source/Util/*
 )
+
+#Add libraries
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
+find_package(SFML REQUIRED graphics network audio window system)
+
+
