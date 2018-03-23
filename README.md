@@ -10,6 +10,8 @@ Features:
 
 * State/Screen system
 
+This is a system that allows you to organise different stages of the game. In other engines and frameworks, you may have seen this named as "Scene", "Stage", or "Room".
+
 * Cruddy GUI system
 
 * Animation
