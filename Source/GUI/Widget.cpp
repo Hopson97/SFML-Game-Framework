@@ -14,7 +14,7 @@ Widget::Text::Text()
 bool Widget::Rectangle::isRolledOn(const sf::RenderWindow& window) const
 {
     auto pos = sf::Mouse::getPosition(window);
-    return getGlobalBounds().contains(pos.x, pos.y);
+    return getGlobalBounds().contains((float)pos.x, (float)pos.y);
 }
 
 bool Widget::Rectangle::isClicked  (sf::Event e, const sf::RenderWindow& window)

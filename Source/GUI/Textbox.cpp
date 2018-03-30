@@ -44,7 +44,7 @@ void TextBox::setPosition(const sf::Vector2f& pos)
                         m_position.y + m_label.getGlobalBounds().height -
                                        m_rect.getGlobalBounds().height / 2);
     m_text.setPosition  (m_position);
-    m_text.move(5, m_rect.getGlobalBounds().height / 2.5);
+    m_text.move(5, m_rect.getGlobalBounds().height / 2.5f);
 }
 
 sf::Vector2f TextBox::getSize() const
@@ -57,7 +57,7 @@ void TextBox::handleClick (sf::Event e, const sf::RenderWindow& window)
 {
     auto pos = sf::Mouse::getPosition(window);
 
-    if (m_rect.getGlobalBounds().contains(pos.x, pos.y))
+    if (m_rect.getGlobalBounds().contains((float)pos.x, (float)pos.y))
     {
         if (e.type == sf::Event::MouseButtonPressed)
         {

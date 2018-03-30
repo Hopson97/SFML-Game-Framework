@@ -1,8 +1,8 @@
 #ifndef MATHS_H_INCLUDED
 #define MATHS_H_INCLUDED
 
-constexpr float PI = 3.14159265;
-constexpr float MIN_PI = 3.14;
+constexpr float PI = 3.14159265f;
+constexpr float MIN_PI = 3.14f;
 
 template <typename T>
 T toRadians(T degrees)
