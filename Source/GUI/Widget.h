@@ -5,6 +5,9 @@
 
 namespace gui
 {
+    /**
+        Base class for GUI widgets
+    */
     class Widget
     {
         public:

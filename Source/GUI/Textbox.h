@@ -6,6 +6,9 @@
 
 namespace gui
 {
+    /**
+        Represents an area of the screen that can be typed onto
+    */
     class TextBox : public gui::Widget
     {
         public:
