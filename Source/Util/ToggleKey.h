@@ -2,6 +2,10 @@
 
 #include <SFML/Graphics.hpp>
 
+/**
+    Class that represents a toggle key.
+    The key can only be pressed every 0.2s
+*/
 class ToggleKey
 {
     public:

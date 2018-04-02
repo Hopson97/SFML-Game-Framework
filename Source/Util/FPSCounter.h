@@ -3,6 +3,9 @@
 
 #include <SFML/Graphics.hpp>
 
+/**
+    Class which counts FPS or other rates
+*/
 class FPSCounter
 {
     public:

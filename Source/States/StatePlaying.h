@@ -4,6 +4,9 @@
 #include "StateBase.h"
 #include "../GUI/StackMenu.h"
 
+/**
+    Game state for the main part of the game
+*/
 class StatePlaying : public StateBase
 {
     public:
