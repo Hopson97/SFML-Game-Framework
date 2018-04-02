@@ -3,6 +3,9 @@
 #include <unordered_map>
 #include <string>
 
+/**
+    Class that manages a single type of SFML resource
+*/
 template<typename Resource>
 class ResourceManager
 {

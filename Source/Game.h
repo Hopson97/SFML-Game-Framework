@@ -7,6 +7,10 @@
 #include "Util/FPSCounter.h"
 #include "States/StateBase.h"
 
+/**
+    The main controller for the game.
+    Handles important things such as the game state, state switching, and the main game loop.
+*/
 class Game
 {
     public:

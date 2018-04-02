@@ -3,6 +3,9 @@
 #include <random>
 #include <ctime>
 
+/**
+    Utility class for generating random numbers
+*/
 template <typename Engine = std::mt19937>
 class Random
 {

@@ -4,6 +4,11 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 
+/**
+    Class for creating an animation.
+    Use Animation::getFrame() with the .setTextureRect of SFML drawable objects to
+    create the animation
+*/
 class Animation
 {
     public:
