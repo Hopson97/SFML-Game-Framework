@@ -1,5 +1,4 @@
-#ifndef NONCOPYABLE_H_INCLUDED
-#define NONCOPYABLE_H_INCLUDED
+#pragma once
 
 struct NonCopyable
 {
@@ -7,5 +6,3 @@ struct NonCopyable
     NonCopyable& operator = (const NonCopyable&) = delete;
     NonCopyable(const NonCopyable&) = delete;
 };
-
-#endif // NONCOPYABLE_H_INCLUDED

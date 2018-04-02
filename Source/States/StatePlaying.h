@@ -1,5 +1,5 @@
-#ifndef STATEPLAYING_H_INCLUDED
-#define STATEPLAYING_H_INCLUDED
+#pragma once
+
 
 #include "StateBase.h"
 #include "../GUI/StackMenu.h"
@@ -18,5 +18,3 @@ class StatePlaying : public StateBase
     private:
         gui::StackMenu m_TestMenu;
 };
-
-#endif // STATEPLAYING_H_INCLUDED

@@ -1,5 +1,4 @@
-#ifndef STATEBASE_H_INCLUDED
-#define STATEBASE_H_INCLUDED
+#pragma once
 
 #include <SFML/Graphics.hpp>
 
@@ -25,5 +24,3 @@ class StateBase : public NonCopyable
     protected:
         Game* m_pGame;
 };
-
-#endif // STATEBASE_H_INCLUDED

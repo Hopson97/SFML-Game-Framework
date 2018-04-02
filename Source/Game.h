@@ -1,5 +1,4 @@
-#ifndef GAME_H_INCLUDED
-#define GAME_H_INCLUDED
+#pragma once
 
 #include <memory>
 #include <vector>
@@ -42,5 +41,3 @@ void Game::pushState(Args&&... args)
 {
     m_states.push_back(std::make_unique<T>(std::forward<Args>(args)...));
 }
-
-#endif // GAME_H_INCLUDED

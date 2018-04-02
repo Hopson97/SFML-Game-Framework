@@ -1,5 +1,4 @@
-#ifndef MATHS_H_INCLUDED
-#define MATHS_H_INCLUDED
+#pragma once
 
 constexpr float PI = 3.14159265f;
 constexpr float MIN_PI = 3.14f;
@@ -15,5 +14,3 @@ T toDegrees(T radians)
 {
     return (radians * 180) / PI;
 }
-
-#endif // MATHS_H_INCLUDED
