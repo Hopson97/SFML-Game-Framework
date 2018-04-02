@@ -1,5 +1,4 @@
-#ifndef TEXTBOX_H_INCLUDED
-#define TEXTBOX_H_INCLUDED
+#pragma once
 
 #include <functional>
 
@@ -38,5 +37,3 @@ namespace gui
 
     };
 }
-
-#endif // TEXTBOX_H_INCLUDED

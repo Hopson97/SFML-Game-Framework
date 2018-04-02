@@ -1,5 +1,4 @@
-#ifndef GUIBUTTON_H_INCLUDED
-#define GUIBUTTON_H_INCLUDED
+#pragma once
 
 #include <functional>
 
@@ -38,5 +37,3 @@ namespace gui
 
     };
 }
-
-#endif // GUIBUTTON_H_INCLUDED

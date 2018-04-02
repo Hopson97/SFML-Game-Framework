@@ -1,5 +1,4 @@
-#ifndef GUIWIDGET_H_INCLUDED
-#define GUIWIDGET_H_INCLUDED
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include "../ResourceManager/ResourceHolder.h"
@@ -33,4 +32,3 @@ namespace gui
     };
 }
 
-#endif // GUIWIDGET_H_INCLUDED

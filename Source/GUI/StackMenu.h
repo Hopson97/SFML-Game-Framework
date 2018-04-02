@@ -1,5 +1,4 @@
-#ifndef STACKMENU_H_INCLUDED
-#define STACKMENU_H_INCLUDED
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -38,5 +37,3 @@ class StackMenu : public NonCopyable
 };
 
 }
-
-#endif // STACKMENU_H_INCLUDED
