@@ -1,24 +1,8 @@
-
-#CodeBLocks stuff
-*.layout
-*.depend
-*.cbp
-bin/
-obj/
-
-#Makefile stuff
-*.o
-MinecraftWeek
-
-#.dll stuff
+Debug/
+Release/
 *.dll
-
-#Builds
-*.7z
-Project/
-
-#Profiler
-*.out
-
-#exe
-*.exe
+*.vcxproj
+*.filters
+*.user
+*.sln
+*
