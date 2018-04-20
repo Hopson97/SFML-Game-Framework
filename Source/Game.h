@@ -4,14 +4,16 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 
-#include "Util/FPSCounter.h"
 #include "States/StateBase.h"
+#include "Util/NonMoveable.h"
+#include "Util/FPSCounter.h"
 
 /**
-    The main controller for the game.
-    Handles important things such as the game state, state switching, and the main game loop.
+    Main controlling class of the game.
+    Handles state switches and the main loop, as well
+    as counting the FPS
 */
-class Game
+class Game : public NonCopyable, public NonMovable
 {
     public:
         Game();
@@ -20,8 +22,11 @@ class Game
 
         template<typename T, typename... Args>
         void pushState(Args&&... args);
-
+        void pushState(std::unique_ptr<StateBase> state);
         void popState();
+        void exitGame();
+        template<typename T, typename... Args>
+        void changeState(Args&&... args);
 
         const sf::RenderWindow& getWindow() const;
 
@@ -37,11 +42,22 @@ class Game
         FPSCounter counter;
 
         bool m_shouldPop = false;
+        bool m_shouldExit = false;
+        bool m_shouldChageState = false;
+        std::unique_ptr<StateBase> m_change;
 
 };
 
 template<typename T, typename... Args>
-void Game::pushState(Args&&... args)
+inline void Game::pushState(Args&&... args)
 {
-    m_states.push_back(std::make_unique<T>(std::forward<Args>(args)...));
+    pushState(std::make_unique<T>(std::forward<Args>(args)...));
+}
+
+template<typename T, typename ...Args>
+inline void Game::changeState(Args && ...args)
+{
+    m_change = std::make_unique<T>(std::forward<Args>(args)...);
+    m_shouldPop = true;
+    m_shouldChageState = true;
 }

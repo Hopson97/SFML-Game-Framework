@@ -1,13 +1,11 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <memory>
 #include "../ResourceManager/ResourceHolder.h"
 
 namespace gui
 {
-    /**
-        Base class for GUI widgets
-    */
     class Widget
     {
         public:
@@ -19,7 +17,6 @@ namespace gui
 
             virtual sf::Vector2f getSize() const = 0;
 
-        protected:
             class Text : public sf::Text
             {
                 public:

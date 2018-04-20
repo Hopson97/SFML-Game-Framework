@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 
@@ -8,9 +7,6 @@
 #include "../Util/NonCopyable.h"
 #include "../Util/NonMoveable.h"
 
-/**
-    Singleton class that holds all the game's resources
-*/
 class ResourceHolder : public NonCopyable, public NonMovable
 {
     public:

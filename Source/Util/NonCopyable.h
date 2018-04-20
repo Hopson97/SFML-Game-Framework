@@ -1,8 +1,5 @@
 #pragma once
 
-/**
-    Anything that inherits from this is non-copyable
-*/
 struct NonCopyable
 {
     NonCopyable() = default;

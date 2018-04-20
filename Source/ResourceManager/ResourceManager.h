@@ -4,7 +4,7 @@
 #include <string>
 
 /**
-    Class that manages a single type of SFML resource
+    Holds all the resources of the game
 */
 template<typename Resource>
 class ResourceManager

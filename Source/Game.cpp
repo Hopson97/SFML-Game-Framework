@@ -2,9 +2,12 @@
 
 #include "States/StatePlaying.h"
 
+#include <iostream>
+
 Game::Game()
-:   m_window    ({1280, 720}, "GameNameHere")
+:   m_window    ({1280, 720}, "Space Invaders")
 {
+    m_window.setPosition({m_window.getPosition().x, 0});
     m_window.setFramerateLimit(60);
     pushState<StatePlaying>(*this);
 }
@@ -12,7 +15,7 @@ Game::Game()
 //Runs the main loop
 void Game::run()
 {
-    constexpr unsigned TPS = 60; //ticks per seconds
+    constexpr unsigned TPS = 30; //ticks per seconds
     const sf::Time     timePerUpdate = sf::seconds(1.0f / float(TPS));
     unsigned ticks = 0;
 
@@ -27,7 +30,6 @@ void Game::run()
         //Get times
         auto time = timer.getElapsedTime();
         auto elapsed = time - lastTime;
-
         lastTime = time;
         lag += elapsed;
 
@@ -61,6 +63,18 @@ void Game::run()
 void Game::tryPop()
 {
     if (m_shouldPop) {
+        m_shouldPop = false;
+        if (m_shouldExit) {
+            m_states.clear();
+            return;
+        }
+        else if (m_shouldChageState) {
+            m_shouldChageState = false;
+            m_states.pop_back();
+            pushState(std::move(m_change));
+            return;
+        }
+        
         m_states.pop_back();
     }
 }
@@ -90,11 +104,23 @@ StateBase& Game::getCurrentState()
     return *m_states.back();
 }
 
+void Game::pushState(std::unique_ptr<StateBase> state)
+{
+    m_states.push_back(std::move(state));
+}
+
 //Flags a boolean for the game to pop state
 void Game::popState()
 {
     m_shouldPop = true;
 }
+
+void Game::exitGame()
+{
+    m_shouldPop = true;
+    m_shouldExit = true;
+}
+
 
 //on tin
 const sf::RenderWindow& Game::getWindow() const

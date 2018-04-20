@@ -1,5 +1,6 @@
 #include "Textbox.h"
 
+#include <iostream>
 
 namespace gui {
 
@@ -81,54 +82,38 @@ void TextBox::handleClick (sf::Event e, const sf::RenderWindow& window)
 
 void TextBox::handleTextInput (sf::Event e)
 {
-    switch(e.type) {
-        case sf::Event::TextEntered:
-            if (m_isActive) {
-                //Get the key that was entered
-                unsigned char keyCode = e.text.unicode;
+    switch (e.type) {
+    case sf::Event::TextEntered:
+        if (m_isActive) {
+            //Get the key that was entered
+            unsigned char keyCode = e.text.unicode;
 
-                if (isValidCharacter(keyCode)) {
+            if (isValidCharacter(keyCode)) {
+                if (m_text.getGlobalBounds().width + 30 <= m_rect.getGlobalBounds().width) {
                     m_pModString->push_back(keyCode);
                 }
-                else if (isBackspace(keyCode)) {
-                    //prevents popping back an empty string
-                    if (m_pModString->length() > 0)
-                        m_pModString->pop_back();
-                }
-                m_text.setString(*m_pModString);
+
             }
-            break;
-
-        default:
-            break;
-    }
-
-
-    if (e.type == sf::Event::TextEntered && m_isActive)
-    {
-        //Get the key that was entered
-        unsigned char keyCode = e.text.unicode;
-
-        //Test if it within the "Type-able keys eg aA to zZ and 0 to 9
-        if (isValidCharacter(keyCode))
-        {
-            m_pModString->push_back(keyCode);
+            else if (isBackspace(keyCode)) {
+                //prevents popping back an empty string
+                if (m_pModString->length() > 0)
+                    m_pModString->pop_back();
+            }
+            m_text.setString(*m_pModString);
         }
-        else if (isBackspace(keyCode))
-        {
-            //prevents popping back an empty string
-            if (m_pModString->length() > 0)
-                m_pModString->pop_back();
-        }
-        m_text.setString(*m_pModString);
+        break;
+
+    default:
+        break;
     }
 }
 
- //return true if the character is within the valid keys eg aA to zZ and 0 to 9
 bool TextBox::isValidCharacter(unsigned char keyCode)
 {
-    return  keyCode >= 32 &&
-            keyCode <= 127;
+    return  keyCode >= 48 && keyCode <= 57  ||  //Numbers
+            keyCode >= 65 && keyCode <= 90  ||  //Uppercase
+            keyCode >= 97 && keyCode <= 122 ||  //Lowercase
+            keyCode == 32;    //Space
 }
 
 bool TextBox::isBackspace(unsigned char keycode)

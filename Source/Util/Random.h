@@ -3,9 +3,6 @@
 #include <random>
 #include <ctime>
 
-/**
-    Utility class for generating random numbers
-*/
 template <typename Engine = std::mt19937>
 class Random
 {
@@ -14,6 +11,8 @@ class Random
     using UniformIntDist = std::uniform_int_distribution<int>;
 
     public:
+        static Random gRand;
+
         Random(int seed = std::time(nullptr))
         :   m_prng  (seed)
         { }

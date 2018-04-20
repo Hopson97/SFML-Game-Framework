@@ -10,7 +10,7 @@ std::string test;
 
 StatePlaying::StatePlaying(Game& game)
 :   StateBase   (game)
-,   m_TestMenu  (game.getWindow())
+,   m_TestMenu  (game.getWindow(), 50)
 {
     auto b = std::make_unique<gui::Button>();
     b->setText("Button 1");

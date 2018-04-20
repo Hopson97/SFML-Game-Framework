@@ -1,14 +1,8 @@
-#ifndef ANIMATION_H_INCLUDED
-#define ANIMATION_H_INCLUDED
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <vector>
 
-/**
-    Class for creating an animation.
-    Use Animation::getFrame() with the .setTextureRect of SFML drawable objects to
-    create the animation
-*/
 class Animation
 {
     public:
@@ -22,7 +16,7 @@ class Animation
             sf::Time    delay;  //Time delay to next frame
         };
 
-        Animation(unsigned frameSize);
+        Animation(unsigned frameWidth, unsigned frameHeight);
 
         void addFrame(unsigned index, sf::Time delay);
 
@@ -34,8 +28,7 @@ class Animation
         std::vector<Frame> m_frames;    //List of animation frames
 
         unsigned m_framePointer = 0;    //The index of the current active frame
-        const unsigned FRAME_SIZE;      //Size of frame in pixels height/width
+        const unsigned FRAME_WIDTH; 
+        const unsigned FRAME_HEIGHT;      
 
 };
-
-#endif // ANIMATION_H_INCLUDED

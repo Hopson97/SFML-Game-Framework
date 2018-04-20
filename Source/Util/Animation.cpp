@@ -1,8 +1,9 @@
 #include "Animation.h"
 
 
-Animation::Animation(unsigned frameSize)
-:   FRAME_SIZE  (frameSize)
+Animation::Animation(unsigned frameWidth, unsigned frameHeight)
+: FRAME_WIDTH   (frameWidth)
+, FRAME_HEIGHT (frameHeight)
 { }
 
 //Adds a frame...
@@ -10,9 +11,9 @@ void Animation::addFrame(unsigned index, sf::Time delay)
 {
     sf::IntRect bounds;
     bounds.top = 0;
-    bounds.height = FRAME_SIZE;
-    bounds.width  = FRAME_SIZE;
-    bounds.left   = index * FRAME_SIZE;
+    bounds.height = FRAME_HEIGHT;
+    bounds.width  = FRAME_WIDTH;
+    bounds.left   = index * FRAME_WIDTH;
 
     m_frames.emplace_back(bounds, delay);
 }

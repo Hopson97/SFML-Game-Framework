@@ -5,7 +5,7 @@ namespace gui {
 //Text
 Widget::Text::Text()
 {
-    setCharacterSize (20);
+    setCharacterSize (25);
     setOutlineColor  (sf::Color::Black);
     setFillColor     (sf::Color::White);
     setFont          (ResourceHolder::get().fonts.get("arial"));

@@ -12,9 +12,6 @@ namespace gui
         Wide,
     };
 
-    /**
-        A clickable button.
-    */
     class Button : public gui::Widget
     {
         public:
@@ -26,8 +23,8 @@ namespace gui
 
             void handleEvent    (sf::Event e, const sf::RenderWindow& window) override;
             void render         (sf::RenderTarget& renderer) override;
-            void setPosition    (const sf::Vector2f& pos) override;
-            sf::Vector2f getSize() const  override;
+            void setPosition    (const sf::Vector2f& pos)   override;
+            sf::Vector2f getSize() const    override;
 
         private:
             void updateText();
@@ -39,4 +36,6 @@ namespace gui
             std::function<void(void)> m_function = [](){};
 
     };
+
+    inline std::unique_ptr<Button> makeButton() { return std::make_unique<Button>(); }
 }
