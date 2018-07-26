@@ -9,7 +9,8 @@ Game::Game()
 {
     m_window.setPosition({m_window.getPosition().x, 0});
     m_window.setFramerateLimit(60);
-    pushState<StatePlaying>(*this); //pushes StatePlaying object "state", "state" is a *this of the object
+    pushState<StatePlaying>(*this); /*pushes StatePlaying object "state" (as in the implementation), the 
+    "(*this)" refers to a dereferenced object of StatePlaying*/
 }
 
 //Runs the main loop
@@ -25,7 +26,7 @@ void Game::run()
 
     //Main loop of the game
     while (m_window.isOpen() && !m_states.empty()) {
-        auto& state = getCurrentState();// state here is the same as "state" or "*this" in line 12
+        auto& state = getCurrentState();// state here is the same as the state pushed in the constructor
 
         //Get times
         auto time = timer.getElapsedTime();
