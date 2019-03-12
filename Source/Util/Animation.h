@@ -24,6 +24,7 @@ class Animation
 
     private:
         sf::Clock m_timer;              //Timer for progressing the animation
+        sf::Time m_overlappedTime;      //Overlapped time from last getFrame() call
 
         std::vector<Frame> m_frames;    //List of animation frames
 
