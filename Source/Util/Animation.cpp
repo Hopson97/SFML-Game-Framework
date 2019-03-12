@@ -48,9 +48,9 @@ const sf::IntRect& Animation::getFrame()
   //Restart timer
   m_timer.restart();
 
-  //Save overlapped time 
+  //Add remaining time to m_overlappedTime
   //(ie. what is left of 'totalElapsed' after subtracting all the frame delays)
-  m_overlappedTime = totalElapsed;
+  m_overlappedTime += totalElapsed;
 
 
   //Return the frame at the framepointer we ended up at
