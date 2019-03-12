@@ -37,16 +37,10 @@ const sf::IntRect& Animation::getFrame()
 
     //Increment framepointer
     m_framePointer++;
-
-    //Reset framepointer if it reaches end of vector
-    if(m_framePointer == m_frames.size())
-      m_framePointer = 0;
-
   }
 
   //Restart timer
   m_timer.restart();
 
-  //Return the frame at the framepointer we ended up at
-  return m_frames[m_framePointer].bounds;
+  return m_frames[ m_framePointer % m_frames.size() ].bounds;
 }
