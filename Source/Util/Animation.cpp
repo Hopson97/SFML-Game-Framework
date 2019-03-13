@@ -21,12 +21,26 @@ void Animation::addFrame(unsigned index, sf::Time delay)
 //Returns the current/active frame of the animation
 const sf::IntRect& Animation::getFrame()
 {
-    if (m_timer.getElapsedTime() >= m_frames[m_framePointer].delay) {
-        m_timer.restart();
-        m_framePointer++;
-        if (m_framePointer == m_frames.size())
-            m_framePointer = 0;
-    }
+  //Add the elapsed time since last getFrame() call to m_overlappedTime
+  m_overlappedTime += m_timer.getElapsedTime();
 
-    return m_frames[m_framePointer].bounds;
+  //Run while the m_overlappedTime is greater than the current frames delay.
+  //This means that we may skip one or more frames if the m_overlappedTime is 
+  //greater than the total delay of the skipped frames.
+  //
+  //(Previously we just incremented the framePoiner once if the elapsed time 
+  // was greater than the first frames delay time)
+  while( m_overlappedTime >= m_frames[m_framePointer].delay )
+  {
+    //Subtract the frames delay time from the totalElapsed time
+    m_overlappedTime -= m_frames[m_framePointer].delay;
+
+    //Increment framepointer
+    m_framePointer++;
+  }
+
+  //Restart timer
+  m_timer.restart();
+
+  return m_frames[ m_framePointer % m_frames.size() ].bounds;
 }
