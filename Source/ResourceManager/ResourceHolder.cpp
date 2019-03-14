@@ -9,7 +9,7 @@ ResourceHolder& ResourceHolder::get()
 ResourceHolder::ResourceHolder()
 :   fonts           ("fonts", "ttf")
 ,   textures        ("txrs", "png")
-,   soundBuffers    ("sfx", "ogg")
+//,   soundBuffers    ("sfx", "ogg") Commented because of a linux error on SFML 2.5.0
 {
 
 }

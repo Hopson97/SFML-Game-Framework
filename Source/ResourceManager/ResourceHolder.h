@@ -14,7 +14,7 @@ class ResourceHolder : public NonCopyable, public NonMovable
 
         ResourceManager<sf::Font>           fonts;
         ResourceManager<sf::Texture>        textures;
-        ResourceManager<sf::SoundBuffer>    soundBuffers;
+        //ResourceManager<sf::SoundBuffer>    soundBuffers; //Commented out because of Linux(possibly) error in sfml 2.5.0 with a std::pair error
 
     private:
         ResourceHolder();

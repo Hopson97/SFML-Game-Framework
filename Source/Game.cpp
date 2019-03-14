@@ -5,11 +5,12 @@
 #include <iostream>
 
 Game::Game()
-:   m_window    ({1280, 720}, "Space Invaders")
+:   m_window    ({1280, 720}, "HopDisplay")
 {
     m_window.setPosition({m_window.getPosition().x, 0});
     m_window.setFramerateLimit(60);
-    pushState<StatePlaying>(*this);
+    pushState<StatePlaying>(*this); /*pushes StatePlaying object "state" (as in the implementation), the 
+    "(*this)" refers to a dereferenced object of StatePlaying*/
 }
 
 //Runs the main loop
@@ -25,7 +26,7 @@ void Game::run()
 
     //Main loop of the game
     while (m_window.isOpen() && !m_states.empty()) {
-        auto& state = getCurrentState();
+        auto& state = getCurrentState();// state here is the same as the state pushed in the constructor
 
         //Get times
         auto time = timer.getElapsedTime();
@@ -46,7 +47,7 @@ void Game::run()
             state.fixedUpdate(elapsed);
         }
 
-        //Render
+        //Render //In actual project, this section can be moved to a render system i.e. classes
         m_window.clear();
         state.render(m_window);
         counter.draw(m_window);

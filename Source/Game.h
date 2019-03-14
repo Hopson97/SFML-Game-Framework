@@ -21,12 +21,12 @@ class Game : public NonCopyable, public NonMovable
         void run();
 
         template<typename T, typename... Args>
-        void pushState(Args&&... args);
+        void pushState(Args&&... args); //to pass multiple arguments
         void pushState(std::unique_ptr<StateBase> state);
         void popState();
         void exitGame();
         template<typename T, typename... Args>
-        void changeState(Args&&... args);
+        void changeState(Args&&... args); // to pass multiple arguments
 
         const sf::RenderWindow& getWindow() const;
 
@@ -55,7 +55,7 @@ inline void Game::pushState(Args&&... args)
 }
 
 template<typename T, typename ...Args>
-inline void Game::changeState(Args && ...args)
+inline void Game::changeState(Args&& ...args)
 {
     m_change = std::make_unique<T>(std::forward<Args>(args)...);
     m_shouldPop = true;
