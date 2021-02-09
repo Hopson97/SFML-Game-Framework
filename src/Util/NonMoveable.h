@@ -1,9 +1,7 @@
 #pragma once
 
-
-struct NonMovable
-{
+struct NonMovable {
     NonMovable() = default;
-    NonMovable& operator = (NonCopyable&&) = delete;
+    NonMovable& operator=(NonCopyable&&) = delete;
     NonMovable(NonCopyable&&) = delete;
 };

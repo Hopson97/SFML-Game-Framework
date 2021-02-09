@@ -1,23 +1,21 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <vector>
 #include <memory>
+#include <vector>
 
-#include "Widget.h"
 #include "../Util/NonCopyable.h"
+#include "Widget.h"
 
-namespace gui
-{
+namespace gui {
 
-class StackMenu : public NonCopyable
-{
-    public:
+    class StackMenu : public NonCopyable {
+      public:
         StackMenu(const sf::RenderWindow& window, float baseY);
         StackMenu(const sf::Vector2f& position);
 
         StackMenu(StackMenu&& other);
-        StackMenu& operator =(StackMenu&& other);
+        StackMenu& operator=(StackMenu&& other);
 
         ~StackMenu() = default;
 
@@ -32,10 +30,10 @@ class StackMenu : public NonCopyable
 
         void setTitle(const std::string& title);
 
-        void handleEvent   (sf::Event e, const sf::RenderWindow& window);
-        void render        (sf::RenderTarget& renderer);
+        void handleEvent(sf::Event e, const sf::RenderWindow& window);
+        void render(sf::RenderTarget& renderer);
 
-    private:
+      private:
         const sf::RenderWindow& getWindow() const;
 
         void initWidget(Widget& w);
@@ -49,6 +47,6 @@ class StackMenu : public NonCopyable
         sf::Vector2f m_baseSize;
 
         Widget::Text m_titleText;
-};
+    };
 
-}
+} // namespace gui

@@ -9,14 +9,12 @@
 std::string test;
 
 StatePlaying::StatePlaying(Game& game)
-:   StateBase   (game)
-,   m_TestMenu  (game.getWindow(), 50)
+    : StateBase(game)
+    , m_TestMenu(game.getWindow(), 50)
 {
     auto b = std::make_unique<gui::Button>();
     b->setText("Button 1");
-    b->setFunction([]() {
-        std::cout << "Button 1 clicked!" << '\n';
-    });
+    b->setFunction([]() { std::cout << "Button 1 clicked!" << '\n'; });
 
     m_TestMenu.addWidget(std::move(b));
 }
@@ -28,17 +26,14 @@ void StatePlaying::handleEvent(sf::Event e)
 
 void StatePlaying::handleInput()
 {
-
 }
 
 void StatePlaying::update(sf::Time)
 {
-
 }
 
 void StatePlaying::fixedUpdate(sf::Time)
 {
-
 }
 
 void StatePlaying::render(sf::RenderTarget& renderer)
