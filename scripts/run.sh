@@ -2,7 +2,7 @@
 
 if [ "$1" = "release" ]
 then
-    ./bin/release/sfml_framework 
+    ./bin/release/GAME_NAME 
 else
-    ./bin/debug/sfml_framework 
+    ./bin/debug/GAME_NAME 
 fi

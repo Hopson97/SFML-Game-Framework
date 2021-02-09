@@ -48,6 +48,11 @@ find_package(SFML REQUIRED audio network graphics window system)
 add_subdirectory(deps/imgui)
 add_subdirectory(deps/imgui_sfml)
 
+target_include_directories(
+    ${PROJECT_NAME}
+    PRIVATE
+    deps
+)
 
 #Finally
 target_link_libraries(${PROJECT_NAME} 
