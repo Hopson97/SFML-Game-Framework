@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 #Set up project
-project(sfml_framework VERSION 1.0)
+project(GAME_NAME VERSION 1.0)
 
 #Set executable
 add_executable(${PROJECT_NAME}     

@@ -20,3 +20,5 @@ Release/
 *.srctrlprj
 *.srctrldb
 *.srctrlbm
+
+GAME_NAME/
