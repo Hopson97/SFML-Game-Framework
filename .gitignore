@@ -1,8 +1,22 @@
-Debug/
-Release/
+# Linux
+/bin
+sfml_framework
+
+# Windows
 *.dll
+*.exe
+*.sln
 *.vcxproj
 *.filters
 *.user
-*.sln
-*
+*.vs
+.vscode
+Debug/
+Release/
+
+# Misc
+*.zip
+*.temp
+*.srctrlprj
+*.srctrldb
+*.srctrlbm

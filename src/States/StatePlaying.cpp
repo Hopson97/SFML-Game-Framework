@@ -31,12 +31,12 @@ void StatePlaying::handleInput()
 
 }
 
-void StatePlaying::update(sf::Time deltaTime)
+void StatePlaying::update(sf::Time)
 {
 
 }
 
-void StatePlaying::fixedUpdate(sf::Time deltaTime)
+void StatePlaying::fixedUpdate(sf::Time)
 {
 
 }

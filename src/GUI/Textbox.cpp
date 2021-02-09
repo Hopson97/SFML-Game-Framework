@@ -110,10 +110,10 @@ void TextBox::handleTextInput (sf::Event e)
 
 bool TextBox::isValidCharacter(unsigned char keyCode)
 {
-    return  keyCode >= 48 && keyCode <= 57  ||  //Numbers
-            keyCode >= 65 && keyCode <= 90  ||  //Uppercase
-            keyCode >= 97 && keyCode <= 122 ||  //Lowercase
-            keyCode == 32;    //Space
+    return  (keyCode >= 48 && keyCode <= 57)  ||  //Numbers
+            (keyCode >= 65 && keyCode <= 90)  ||  //Uppercase
+            (keyCode >= 97 && keyCode <= 122) ||  //Lowercase
+            (keyCode == 32);    //Space
 }
 
 bool TextBox::isBackspace(unsigned char keycode)

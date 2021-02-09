@@ -1,21 +1,52 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.10)
 
-#Enable debug symbols
-if (NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose debug or release" FORCE)
+#Set up project
+project(sfml_framework VERSION 1.0)
+
+#Set executable
+add_executable(${PROJECT_NAME}     
+    src/main.cpp
+    src/Game.cpp
+
+    src/GUI/Button.cpp
+    src/GUI/StackMenu.cpp
+    src/GUI/Textbox.cpp
+    src/GUI/Widget.cpp
+    
+    src/ResourceManager/ResourceHolder.cpp
+
+    src/States/StatePlaying.cpp
+
+    src/Util/Animation.cpp
+    src/Util/FileUtil.cpp
+    src/Util/FPSCounter.cpp
+    src/Util/Maths.cpp
+    src/Util/Maths.cpp
+)
+
+#Set C++17
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_EXTENSIONS OFF)
+
+#Set flags
+if(MSVC)
+  	target_compile_options(${PROJECT_NAME} PRIVATE 
+    	/W4 /WX)
+else()
+  	target_compile_options(${PROJECT_NAME} PRIVATE 
+		-Wall -Wextra -pedantic -Werror)		#Warning flags
 endif()
 
-project(SFML_Framework)
-
-#Add the files
-file(GLOB_RECURSE SOURCES Source/*.cpp)
-add_executable(framework ${SOURCES})
-
-#Add libraries
+#Set module path
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
-find_package(SFML REQUIRED graphics network audio window system)
-target_link_libraries(framework ${SFML_LIBRARIES})
 
-#Copy resources
-file(COPY ${CMAKE_SOURCE_DIR}/res DESTINATION ${CMAKE_BINARY_DIR})
+#Find libraries
+find_package(Threads)
+find_package(SFML REQUIRED audio network graphics window system)
 
+#Finally
+target_link_libraries(${PROJECT_NAME} 
+    Threads::Threads 
+    ${SFML_LIBRARIES} 
+    ${SFML_DEPENDENCIES}
+)
