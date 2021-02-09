@@ -42,11 +42,19 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
 #Find libraries
 find_package(Threads)
+find_package(OpenGL REQUIRED)
 find_package(SFML REQUIRED audio network graphics window system)
+
+add_subdirectory(deps/imgui)
+add_subdirectory(deps/imgui_sfml)
+
 
 #Finally
 target_link_libraries(${PROJECT_NAME} 
+    imgui
+    imgui_sfml
     Threads::Threads 
+    ${OPENGL_LIBRARIES} 
     ${SFML_LIBRARIES} 
     ${SFML_DEPENDENCIES}
 )
