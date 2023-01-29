@@ -8,7 +8,7 @@ description here
 
 SFML is required.
 
-These can be installed from your project manager. For example, on Debian/ Ubuntu:
+These can be installed from your package manager. For example, on Debian/ Ubuntu:
 
 ```sh
 sudo apt install libsfml-dev
